@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Accordian.css">
+    <title>Creating an accordian</title>
+</head>
+<body>
+    <h1>This is a accordian which shows collapsible content</h1>
+
+    <button class="accordian">Section 1</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
+    <button class="accordian">Section 2</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
+    <button class="accordian">Section 3</button>
+        <div class="panel">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordian");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;    //targets the panel of the clicked section
+
+                // The nextElementSibling property returns the element immediately following the specified element, in the same tree level.
+                
+                if (panel.style.display === "block") 
+                    {panel.style.display = "none";} 
+                else 
+                    {panel.style.display = "block";}
+            });
+        }
+    </script>
+
+
+</body>
+</html>

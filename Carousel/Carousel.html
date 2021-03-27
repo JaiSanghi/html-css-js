@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Carousel.css">
+    <title>Creating a Carousel</title>
+</head>
+
+<body>
+    <h1>This is a Carousel or image slideshow</h1>
+    <div class="carousel">
+        <div class="mySlide">
+            <div class="slideNumber">1</div>
+            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nature-quotes-1557340276.jpg?crop=0.666xw:1.00xh;0.168xw,0&resize=640:*"
+                alt="carousel_slide_1">
+        </div>
+        <div class="mySlide">
+            <div class="slideNumber">2</div>
+            <img src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/325466_1100-1100x628.jpg"
+                alt="carousel_slide_2">
+        </div>
+        <div class="mySlide">
+            <div class="slideNumber">3</div>
+            <img src="https://eco-business.imgix.net/ebmedia/fileuploads/Feature_RightsofNature_inline2.jpg?fit=crop&h=801&ixlib=django-1.2.0&q=85&w=1200"
+                alt="carousel_slide_3">
+        </div>
+
+        <a class="prevslide" onclick="plusSlides(-1)"> < </a>
+        <a class="nextslide" onclick="plusSlides(1)"> > </a>
+
+        <div class="slidecaption">
+            <p class="caption">My Carousel</p>
+        </div>
+
+        <div class="demoimagesrow">
+            <div class="demo">
+                <img class="demoimage cursor"  onclick="currentSlide(1)" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/nature-quotes-1557340276.jpg?crop=0.666xw:1.00xh;0.168xw,0&resize=640:*"  alt="demo_img_1">
+            </div>
+            <div class="demo">
+                <img class="demoimage cursor"  onclick="currentSlide(2)" src="https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/325466_1100-1100x628.jpg" alt="demo_img_2">
+            </div>
+            <div class="demo">
+                <img class="demoimage cursor"  onclick="currentSlide(3)" src="https://eco-business.imgix.net/ebmedia/fileuploads/Feature_RightsofNature_inline2.jpg?fit=crop&h=801&ixlib=django-1.2.0&q=85&w=1200"   alt="demo_img_3">
+            </div>
+        </div>
+    </div>
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {showSlides(slideIndex += n);}   //used on prev and next arrow
+
+        function currentSlide(n) {showSlides(slideIndex = n);}  //used on demo images
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlide");
+            var dots = document.getElementsByClassName("demoimage");
+            if (n > slides.length) 
+            { slideIndex = 1 }          //when next is pressed from slide 3 it comes back to slide 1
+
+            if (n < 1) 
+            { slideIndex = slides.length } 
+
+            for (i = 0; i < slides.length; i++) 
+            { slides[i].style.display = "none"; } //make all images invisible (for once)
+
+            for(i = 0; i < dots.length; i++) 
+            { dots[i].className = dots[i].className.replace(" active", ""); }   //remove active status from all (for once)
+
+            slides[slideIndex - 1].style.display = "block"; //to make image visible
+            dots[slideIndex - 1].className += "active"; //to set opacity 100% for active image in demoimage row
+        }
+    </script>
+</body>
+
+</html>

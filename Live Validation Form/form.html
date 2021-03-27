@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="form.css">
+    <title>Live Validation Form</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>LIVE VALIDATION FORM</h1>
+        <form id="login-form" name="login-form" class="form" action="">
+            <div class="form-group"><input class="input-field" type="text" name="username" id="username"
+                    placeholder="USERNAME (must be greater than 3 characters)" /></div>
+            <div class="form-group"><input class="input-field" type="password" name="password" id="password"
+                    placeholder="PASSWORD (must be greater than 7 characters)" /></div>
+            <input class="login" type="submit" value="LOG IN">
+        </form>
+    </div>
+    <script>
+        const form = document.querySelector('#login-form');
+
+        let username = form.elements.namedItem('username');
+        let password = form.elements.namedItem('password');
+
+        username.addEventListener('input', validate);
+        password.addEventListener('input', validate);
+
+        form.addEventListener('submit', function(e){
+        e.preventDefault();
+        alert('Form Successfully Submitted');
+        });
+
+        function validate(e){
+            if(e.target.name =="password"){
+                if(e.target.value.length>=8){
+                    e.target.classList.add('valid');
+                    e.target.classList.remove('invalid');
+                }else{
+                    e.target.classList.remove('valid');
+                    e.target.classList.add('invalid');
+                }
+                }
+            
+            if(e.target.name =="username"){
+                if(e.target.value.length>=4){
+                    e.target.classList.add('valid');
+                    e.target.classList.remove('invalid');
+                }else{
+                    e.target.classList.remove('valid');
+                    e.target.classList.add('invalid');
+                }
+                }
+            }
+    </script>
+</body>
+
+</html>
